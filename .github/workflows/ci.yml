@@ -117,17 +117,6 @@ jobs:
         if: hashFiles('go.mod') != ''
         run: go build ./... && go test ./...
 
-  # Dependency review needs the dependency-graph API, which is Forbidden on a
-  # private repo without GitHub Advanced Security — it would red every PR. Public
-  # repos get it free; a private repo with GHAS can drop the visibility guard.
-  dependency-review:
-    name: Dependency review
-    if: github.event_name == 'pull_request' && !github.event.repository.private
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
-      - uses: actions/dependency-review-action@v5.0.1
-        with:
-          fail-on-severity: high
+  # No dependency-review job: the dependency-graph API answers Forbidden on a
+  # repo created today, which reds every pull request (dependabot's included).
+  # OSV-Scanner runs on every push and covers the same ground.
