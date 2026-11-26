@@ -1,0 +1,23 @@
+bb-plugin-ponytail
+==================
+
+The skills in skills/ are adapted from ponytail by Dietrich Gebert
+(https://github.com/DietrichGebert/ponytail), version 5.3.3, MIT licensed —
+see LICENSE in this directory, which is the upstream licence verbatim.
+
+Adaptations made for BB (all recorded in the skills themselves):
+
+- Slash-command invocations (`/ponytail lite`, `/ponytail-audit`, …) became
+  ordinary phrases ("ponytail lite", "ponytail review"), because BB exposes
+  skills by name rather than as slash commands.
+- Claude Code's prompt band, `PONYTAIL_DEFAULT_MODE` and
+  `~/.config/ponytail/config.json` are removed: BB has no status line and the
+  plugin persists nothing between threads.
+- Upstream's `/plugin` install and auto-update instructions are replaced with
+  a pointer to this port's version.
+
+Not ported: upstream's harness hooks (mode tracker, band import, session
+accounting, subagent). They attach to Claude Code, Codex, Cursor, Qoder and
+OpenCode plugin APIs, none of which BB reproduces.
+
+Original work: server.ts, package.json, README.md, test/ — MIT, prismatic7.

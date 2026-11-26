@@ -1,0 +1,30 @@
+{
+  "name": "bb-plugin-ponytail",
+  "version": "0.1.0",
+  "type": "module",
+  "engines": {
+    "bb": ">=0.50",
+    "bbPluginSdk": ">=0.6.157"
+  },
+  "bb": {
+    "name": "Ponytail",
+    "description": "Lazy senior dev mode for BB agents: the smallest change that fully solves the task, carried as six skills.",
+    "branding": {
+      "icon": "Feather"
+    },
+    "server": "./server.ts",
+    "skills": [
+      "skills"
+    ]
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.157",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "bundle": "bb plugin build .",
+    "test": "node --test test/skills.test.ts"
+  }
+}
